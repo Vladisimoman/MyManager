@@ -1,0 +1,21 @@
+// MyManager на Cloudflare Workers (етап 23).
+// Деплой з цієї папки: npx wrangler@4.156.2 deploy
+// Секрет клієнта Google (один раз): npx wrangler@4.156.2 secret put GOOGLE_CLIENT_SECRET
+{
+  // Та сама назва, що й у створеного в панелі Worker, — адреса не зміниться.
+  "name": "dark-dream-0993",
+  "main": "src/worker.js",
+  "compatibility_date": "2026-10-01",
+  "workers_dev": true,
+  "assets": {
+    // Готовий сайт (flutter build web) — Claude кладе його сюди на кожному етапі.
+    "directory": "./public",
+    "binding": "ASSETS",
+    // Worker обробляє лише /api/*, решту одразу віддає Cloudflare.
+    "run_worker_first": ["/api/*"]
+  },
+  "vars": {
+    // Не секрет: той самий Client ID, що в lib/core/config.dart.
+    "GOOGLE_CLIENT_ID": "970722666267-1i7iatop04ft28afirsbmkqktund59cb.apps.googleusercontent.com"
+  }
+}

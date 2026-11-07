@@ -1,0 +1,9 @@
+{
+  "name": "mymanager-worker",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test test/worker.test.mjs",
+    "deploy": "npx wrangler@4.156.2 deploy"
+  }
+}
